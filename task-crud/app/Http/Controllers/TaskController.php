@@ -59,7 +59,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        //show the edit form 
+        return view('tasks.edit', compact('task'));
     }
 
     /**
