@@ -32,7 +32,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //save the new task
+        $validated=$request->validate([
+            'title'=>'required|max:255',
+            'description'=>'nullable',
+            'is_completed'=>'boolean'
+        ]);
+
+        Task::create($validated);
+
+        return redirect()->route('tasks.index')
+        ->with('success', 'Task created successfully!');
     }
 
     /**
