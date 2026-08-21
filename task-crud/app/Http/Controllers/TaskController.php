@@ -68,7 +68,17 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        //save the changes 
+        $validated=$request->validate([
+            'title'=>'requred|max:255',
+            'description'=>'nullable',
+            'is_completed'=>'boolean'
+        ]);
+
+        $task->update($validated);
+
+        return redirect()->route('tasks.index')
+        ->with('success', 'Task updated successfully!');
     }
 
     /**
