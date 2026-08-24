@@ -14,7 +14,7 @@ class TaskController extends Controller
     {
         //read--list all tasks 
         $tasks=Task::latest()->get();
-        return view('task.index',compact('tasks'));
+        return view('tasks.index',compact('tasks'));
 
     }
 
