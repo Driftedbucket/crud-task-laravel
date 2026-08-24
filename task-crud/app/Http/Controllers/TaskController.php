@@ -34,10 +34,12 @@ class TaskController extends Controller
     {
         //save the new task
         $validated=$request->validate([
-            'title'=>'required|max:255',
-            'description'=>'nullable',
-            'is_completed'=>'boolean'
+            'title' => 'required|max:255',
+            'is_completed' => 'boolean',
+            'description' => 'nullable'
         ]);
+
+        $validated['is_completed']=$request->boolean('is_completed');
 
         Task::create($validated);
 
